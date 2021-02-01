@@ -1,0 +1,47 @@
+<head>
+	<title>Digital Clock</title>
+	<style>
+		@font-face
+		{
+			font-family: digital;
+			src:url(digital-7.ttf);
+		}
+
+		body{
+			background: rgb(0,0,20);
+			color: #fff;
+		}
+
+		#clock {
+			font-size: 100px;
+			display: block;
+			text-align: center;
+			font-family: digital;
+			margin: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="clock">05:05:05 PM</div>
+	<script type="text/javascript">
+		function myClock(){
+			var time = new Date();
+			var hr = time.getHours();
+			var min = time.getMinutes();
+			var sec = time.getSeconds();
+			var am_pm = " AM";
+
+			if (hr < 10) hr = "0" + hr;
+			if (min < 10) min = "0" + min;
+			if (sec < 10) sec = "0" + sec;
+			if (hr > 12) {am_pm = " PM"; hr -= 12;}
+
+
+			var digitalClock = hr + ":" + min + ":" + sec + am_pm;
+			document.getElementById("clock").innerHTML = digitalClock;
+
+			setTimeout(myClock, 1000);
+		}
+		myClock();
+	</script>
+</body>
